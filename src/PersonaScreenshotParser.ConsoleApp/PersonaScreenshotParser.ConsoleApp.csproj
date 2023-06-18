@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PersonaScreenshotParser.Core\PersonaScreenshotParser.Core.csproj" />
+      <ProjectReference Include="..\PersonaScreenshotParser.Database\PersonaScreenshotParser.Database.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CodeJam" Version="4.1.0" />
+    </ItemGroup>
+
+</Project>

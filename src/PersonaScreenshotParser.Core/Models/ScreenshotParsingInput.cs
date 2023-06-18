@@ -1,6 +1,6 @@
 ﻿namespace PersonaScreenshotParser.Core.Models;
 
-public class ScreenshotParsingInput
+public sealed class ScreenshotParsingInput : IDisposable
 {
     public string FilePath { get; }
     public Stream ContentStream { get; }
@@ -13,5 +13,10 @@ public class ScreenshotParsingInput
         ContentStream = contentStream;
         Width = width;
         Height = height;
+    }
+
+    public void Dispose()
+    {
+        ContentStream.Dispose();
     }
 }

@@ -6,13 +6,23 @@ namespace PersonaScreenshotParser.Core;
 
 public class IronOcrScreenshotParser : IScreenshotParser
 {
-    public async Task<ScreenshotParsingResult> ParseAsync(ScreenshotParsingInput input, CancellationToken ct = default)
+    private readonly IronTesseract _ocrEngine;
+
+    static IronOcrScreenshotParser()
     {
-        var ocrEngine = new IronTesseract(new TesseractConfiguration {  BlackListCharacters = "=[]"})
+        Installation.LoggingMode = Installation.LoggingModes.None;
+    }
+    
+    public IronOcrScreenshotParser()
+    {
+        _ocrEngine = new IronTesseract(new TesseractConfiguration {  BlackListCharacters = "=[]"})
         {
             Language = OcrLanguage.EnglishBest, MultiThreaded = true
         };
-        
+    }
+    
+    public async Task<ScreenshotParsingResult> ParseAsync(ScreenshotParsingInput input, CancellationToken ct = default)
+    {
         using var ocrInput = new OcrInput();
         ocrInput.AddImage(input.ContentStream, 
             // TODO: Calculate dialogue box coordinates for non 1440p resolutions
@@ -22,7 +32,7 @@ public class IronOcrScreenshotParser : IScreenshotParser
         // ocrInput.Deskew();  // use only if image not straight
         // ocrInput.DeNoise(); // use only if image contains digital noise
 
-        var ocrResult = await ocrEngine.ReadAsync(ocrInput);
+        var ocrResult = await _ocrEngine.ReadAsync(ocrInput);
 
         string name = "", text = "";
         var validLines = ocrResult.Lines.Where(l => l.Confidence >= 50);
@@ -32,14 +42,14 @@ public class IronOcrScreenshotParser : IScreenshotParser
         {
             if(foundNameLine)
             {
-                text += l.Text + Environment.NewLine;
+                text += CorrectOcrText(l.Text) + Environment.NewLine;
                 continue;
             }
 
             if(IsValidNameLine(l))
             {
                 foundNameLine = true;
-                name = l.Text;
+                name = CorrectOcrText(l.Text);
             }
         }
 
@@ -51,13 +61,11 @@ public class IronOcrScreenshotParser : IScreenshotParser
         if (l.Words.Length is < 1 or > 2)
             return false;
 
-        return l.Words.All(w => char.IsUpper(w.Text.First()));
+        return l.Words.All(w => char.IsUpper(CorrectOcrText(w.Text).First()));
     }
 
-    private static void PrintLine(OcrResult.Line l, bool isNameLine = false)
+    private static string CorrectOcrText(string text)
     {
-        var content = l.Text.Replace('|', 'I');
-
-        Console.WriteLine(isNameLine ? $"[{content}]" : content);
+        return text.Replace('|', 'I');
     }
 }
