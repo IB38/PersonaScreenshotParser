@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+**/.idea/
+[Pp]ackages/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
