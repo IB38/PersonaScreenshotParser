@@ -19,6 +19,9 @@ public class IronOcrScreenshotParser : IScreenshotParser
         {
             Language = OcrLanguage.EnglishBest, MultiThreaded = true
         };
+
+        // Disable console spam
+        _ocrEngine.Configuration.TesseractVariables["debug_file"] = "NUL";
     }
     
     public async Task<ScreenshotParsingResult> ParseAsync(ScreenshotParsingInput input, CancellationToken ct = default)

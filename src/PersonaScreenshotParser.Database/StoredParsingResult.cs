@@ -15,11 +15,14 @@ public class StoredParsingResult
     
     public string CharacterName { get; set; }
     public string DialogueText { get; set; }
+    
+    public DateTimeOffset ParsingDt { get; set; }
 
-    public StoredParsingResult(string inputFilePath, string characterName, string dialogueText)
+    public StoredParsingResult(string inputFilePath, string characterName, string dialogueText, DateTimeOffset parsingDt)
     {
         InputFilePath = inputFilePath;
         CharacterName = characterName;
         DialogueText = dialogueText;
+        ParsingDt = parsingDt;
     }
 }
