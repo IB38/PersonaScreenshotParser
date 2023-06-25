@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonaScreenshotParser.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonaScreenshotParser.Database", "src\PersonaScreenshotParser.Database\PersonaScreenshotParser.Database.csproj", "{EA11AA02-B507-47F0-901D-8B4EC7B883EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonaScreenshotParser.Viewer", "src\PersonaScreenshotParser.Viewer\PersonaScreenshotParser.Viewer.csproj", "{3297D283-4A4F-4D9F-80FE-EB148E05E348}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{EA11AA02-B507-47F0-901D-8B4EC7B883EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA11AA02-B507-47F0-901D-8B4EC7B883EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA11AA02-B507-47F0-901D-8B4EC7B883EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3297D283-4A4F-4D9F-80FE-EB148E05E348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3297D283-4A4F-4D9F-80FE-EB148E05E348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3297D283-4A4F-4D9F-80FE-EB148E05E348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3297D283-4A4F-4D9F-80FE-EB148E05E348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,5 +46,6 @@ Global
 		{B47715E5-D2D2-405F-96BC-868632266433} = {AB2E8E6F-95A2-4173-A2B8-7A743A31E3AA}
 		{F407F0EE-7B3A-4EBF-87F6-C0A8146FC88D} = {AB2E8E6F-95A2-4173-A2B8-7A743A31E3AA}
 		{EA11AA02-B507-47F0-901D-8B4EC7B883EA} = {AB2E8E6F-95A2-4173-A2B8-7A743A31E3AA}
+		{3297D283-4A4F-4D9F-80FE-EB148E05E348} = {AB2E8E6F-95A2-4173-A2B8-7A743A31E3AA}
 	EndGlobalSection
 EndGlobal
